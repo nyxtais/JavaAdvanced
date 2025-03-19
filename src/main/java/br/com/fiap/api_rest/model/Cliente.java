@@ -1,9 +1,8 @@
 package br.com.fiap.api_rest.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Cliente {
@@ -16,6 +15,14 @@ public class Cliente {
     private String senha;
     private String cpf;
     private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "id_filial")
+    private Filial filial;
+    @ManyToMany
+    @JoinTable(name = "grupo_cliente",
+    joinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "id_cliente", referencedColumnName = "id"))
+    private List<Grupo> grupos;
 
     public Cliente() {
     }
@@ -84,5 +91,21 @@ public class Cliente {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
+
+    public List<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
     }
 }

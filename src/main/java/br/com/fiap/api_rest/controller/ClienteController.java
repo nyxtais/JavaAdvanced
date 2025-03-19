@@ -37,11 +37,11 @@ public class ClienteController {
 
     @Operation(summary = "Cria um novo cliente")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cliente cadastrado",
-            content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Cliente.class))}),
-            @ApiResponse(responseCode = "400", description = "Atributos informados inválidos",
-            content = @Content(schema = @Schema()))
+            @ApiResponse(responseCode = "201", description = "Cliente cadastrado com sucesso",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Cliente.class))}),
+            @ApiResponse(responseCode = "400", description = "Atributos informados são inválidos",
+                    content = @Content(schema = @Schema()))
     })
     @PostMapping
     public ResponseEntity<Cliente> createCliente(@Valid @RequestBody ClienteRequest cliente) {
@@ -60,7 +60,7 @@ public class ClienteController {
     // RequestParam = parâmetro como query, ex: /clientes/?id=1
     @Operation(summary = "Retorna um cliente por ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Cliente encontrado",
+            @ApiResponse(responseCode = "200", description = "Cliente encontrado com sucesso",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ClienteResponse.class))}),
             @ApiResponse(responseCode = "404", description = "Nenhum cliente encontrado",
@@ -77,7 +77,7 @@ public class ClienteController {
 
     @Operation(summary = "Atualiza um cliente existente")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cliente encontrado e atualizado",
+            @ApiResponse(responseCode = "201", description = "Cliente encontrado e atualizado com sucesso",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = Cliente.class))}),
             @ApiResponse(responseCode = "400", description = "Nenhum cliente encontrado para atualizar",
