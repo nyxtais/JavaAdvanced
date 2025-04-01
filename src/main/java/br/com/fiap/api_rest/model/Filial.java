@@ -11,10 +11,17 @@ public class Filial {
     private Long id;
     private String nome;
     @OneToOne
-    @JoinColumn(name= "id_endereco")
+    @JoinColumn(name = "id_endereco")
     private Endereco endereco;
     @OneToMany(mappedBy = "filial")
     private List<Cliente> clientes;
+
+    public Filial() {}
+
+    public Filial(String nome, Endereco endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
+    }
 
     public Long getId() {
         return id;

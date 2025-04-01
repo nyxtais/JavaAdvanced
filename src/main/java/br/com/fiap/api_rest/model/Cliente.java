@@ -20,8 +20,8 @@ public class Cliente {
     private Filial filial;
     @ManyToMany
     @JoinTable(name = "grupo_cliente",
-    joinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "id_cliente", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_cliente", referencedColumnName = "id"))
     private List<Grupo> grupos;
 
     public Cliente() {
